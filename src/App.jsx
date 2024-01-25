@@ -10,6 +10,7 @@ const messages = [
 
 export default function App() {
   const [stepsInc, setStepsInc] = useState(1);
+  const [isOpen, setIsOpen] = useState(true)
 
   const handleIncClick = () => {
     if (stepsInc >= 4) return null;
@@ -23,6 +24,8 @@ export default function App() {
 
   return (
     <>
+    <button className="close" onClick={()=>setIsOpen(!isOpen)}>&times;</button>
+    { isOpen && (
       <div className="steps">
         <div className="numbers ">
           <div className={`${stepsInc >= 1 ? "active" : ""} `}>1</div>
@@ -60,6 +63,8 @@ export default function App() {
           </button>
         </div>
       </div>
+    )
+      }
     </>
   );
 }
